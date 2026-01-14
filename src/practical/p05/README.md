@@ -1,81 +1,91 @@
-# Subject 5 — Safe Fetch Comment
+# Subject 5 — Safe Fetch User
 
 ## API Endpoint
 
 ```
-https://jsonplaceholder.typicode.com/comments/{id}
+https://jsonplaceholder.typicode.com/users/{id}
 ```
 
 ## Function name
 
-`safeFetchComment`
+`safeFetchUser`
 
 ## Function interface
 
 ```tsx
-safeFetchComment(commentId)
+safeFetchUser(userId)
 ```
 
 ## Description
 
-Fetch a single comment by `commentId`.
+Fetch a single user by `userId`.
 
 Rules:
-
-- If any error occurs, return `null`
-- If successful, return an object with `id` and `body`
+- If any error occurs, thorw error with custom name and message "Sec34UserNotFoundError" and return error message
+- If successful, return an object with `id`, `name`, `phone`, `address`
 
 ## Example input
 
 ```tsx
-safeFetchComment(1)
+safeFetchUser(1)
 ```
 
 ## Example output
 
 ```json
-{ id: 1, body: "laudantium enim quasi..." }
+{
+  id: 1,
+  name: "Leanne Graham",
+  address: {
+    street: "Kulas Light",
+    suite: "Apt. 556",
+    city: "Gwenborough",
+    zipcode: "92998-3874",
+    geo: {
+      lat: "-37.3159",
+      lng: "81.1496"
+    }
+  },
+  phone: "1-770-736-8031 x56442",
+}
 ```
 
 ## Example input
 
 ```tsx
-safeFetchComment(9999)
+safeFetchUser(9999)
 ```
 
 ## Example output
 ```ts
-null
+"Sec34UserNotFoundError"
 ```
 
 ## Edge Cases
 
-### Invalid commentId values
-Return `null` for invalid or non-existent comment IDs:
+### Invalid userId values
+Return `Sec34UserNotFoundError` for invalid or non-existent user IDs:
 
 ```tsx
-safeFetchComment(0)      // returns null
-safeFetchComment(-1)    // returns null
-safeFetchComment(9999)  // returns null
+safeFetchUser(0)      // returns Sec34UserNotFoundError
+safeFetchUser(-1)    // returns Sec34UserNotFoundError
+safeFetchUser(9999)  // returns Sec34UserNotFoundError
 ```
 
-### Comment with empty body
-If the comment exists but has an empty body, return it:
+### User with empty address
+If the user exists but has an empty address, return it:
 
 ```tsx
-safeFetchComment(1)
+safeFetchUser(1)
 ```
 
 ```json
-{ id: 1, body: "" }
-```
-
-### Error handling
-Return `null` for any error (network error, 404, 500, timeout, etc.):
-
-```tsx
-safeFetchComment(null)      // returns null (invalid input)
-safeFetchComment(undefined) // returns null (invalid input)
+{
+  id: 1,
+  name: "Leanne Graham",
+  address: null,
+  phone: "1-770-736-8031 x56442",
+}
 ```
 
 ## Global Rules

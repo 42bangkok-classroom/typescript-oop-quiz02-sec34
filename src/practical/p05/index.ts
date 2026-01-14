@@ -1,2 +1,1 @@
-export function safeFetchComment() {}
-
+export function safeFetchUser() {}

@@ -49,10 +49,10 @@ filterUserById(1)
 ## Edge Cases
 
 ### User not found
-If user not found, return null:
+If user not found, return error message:
 
 ```json
-null
+"Invalid id"
 ```
 
 ### Empty users array
@@ -60,13 +60,6 @@ If there are no users, return null:
 
 ```json
 null
-```
-
-### Invalid id
-If users is not empty but id is invalid, return error message:
-
-```json
-"Invalid id"
 ```
 
 ## Global Rules

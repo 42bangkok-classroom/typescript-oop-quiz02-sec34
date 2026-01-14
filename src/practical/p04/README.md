@@ -1,63 +1,85 @@
-# Subject 4 — Count Comments Per Post
+# Subject 4 — Get Todos By Id
 
 ## API Endpoint
 
 ```
-https://jsonplaceholder.typicode.com/comments
+https://jsonplaceholder.typicode.com/todos
+https://jsonplaceholder.typicode.com/users
 ```
 
 ## Function name
 
-`countCommentsByPost`
+`getTodosById`
 
 ## Function interface
 
 ```tsx
-countCommentsByPost()
+getTodosById(id)
 ```
 
 ## Description
 
-Fetch comments and return an object that shows how many comments each post has.
-
-**Important Notes:**
-- The object keys should be numbers (post IDs), not strings.
-- If the comments array is empty, return an empty object `{}`.
-- Handle edge cases gracefully (e.g., comments with `null` or `undefined` postId should be skipped).
-- Use `try/catch` as required by global rules, but focus on correctly processing valid API responses.
+Fetch todos and return todos array with user data from given id.
 
 ## Example output
 
 ```json
 {
-	1: 5,
-	2: 5,
-	3: 5
+	id: 1,
+	name: "Leanne Graham",
+	address: {
+		street: "Kulas Light",
+		suite: "Apt. 556",
+		city: "Gwenborough",
+		zipcode: "92998-3874",
+		geo: {
+			lat: "-37.3159",
+			lng: "81.1496"
+		}
+	},
+	phone: "1-770-736-8031 x56442",
+	todos: [
+		{
+    		userId: 1,
+			id: 1,
+			title: "delectus aut autem",
+			completed: false
+		},
+		...
+	]
 }
 ```
 
 ## Edge Cases
 
-### Empty comments array
-If the comments array is empty, return an empty object:
-
-```json
-{}
-```
-
-### Posts with zero comments
-If a post has no comments, it should not appear in the result object:
+### Empty todos array
+If the todos array is empty, return an empty array:
 
 ```json
 {
-	1: 1,
-	3: 1
+	id: 1,
+	name: "Leanne Graham",
+	address: {
+		street: "Kulas Light",
+		suite: "Apt. 556",
+		city: "Gwenborough",
+		zipcode: "92998-3874",
+		geo: {
+			lat: "-37.3159",
+			lng: "81.1496"
+		}
+	},
+	phone: "1-770-736-8031 x56442",
+	todos: []
 }
 ```
-Note: Post ID 2 is not in the result because it has no comments.
 
-### Comments with null or undefined postId
-Comments with `null` or `undefined` postId should be skipped and not counted.
+### Invalid id
+If a id has not found, return error message:
+
+```json
+"Invalid id"
+```
 
 ## Global Rules
 

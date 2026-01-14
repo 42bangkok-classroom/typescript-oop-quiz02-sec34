@@ -1,1 +1,1 @@
-export function mapPostWithCommentCount() {}
+export function filterUserById(id) {}
