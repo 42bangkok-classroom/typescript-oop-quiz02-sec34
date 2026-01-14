@@ -1,67 +1,162 @@
-# Subject 2 — Filter Posts By User
+# Subject 2 — Add new user
 
 ## API Endpoint
 
 ```
-https://jsonplaceholder.typicode.com/posts
+https://jsonplaceholder.typicode.com/users
 ```
 
 ## Function name
 
-`getPostsByUser`
+`addUser`
 
 ## Function interface
 
 ```tsx
-getPostsByUser(userId)
+addUser(newUserData)
 ```
 
 ## Description
 
-Fetch posts and return only posts that belong to the given `userId`.
+Fetch users and add new user.
 
-Return only `id` and `title`.
+Note: The id of the new user is the last user's id + 1.
+Note2: The new user will be object only not array.
+Return only `id`, `name`, `phone`, `address`.
 
 ## Example input
 
 ```tsx
-getPostsByUser(1)
+addUser({
+  name: "John Doe",
+  phone: "1234567890",
+  address: {
+    street: "123 Main St",
+    suite: "Apt 1",
+    city: "Anytown",
+    zipcode: "12345",
+    geo: {
+      lat: "-37.3159",
+      lng: "81.1496"
+    }
+  }
+});
 ```
 
 ## Example output
 
 ```json
 [
-  { id: 1, title: "sunt aut facere repellat provident occaecati" },
-  { id: 2, title: "qui est esse" }
+  {
+    id: 1,
+    name: "Leanne Graham",
+    address: {
+      street: "Kulas Light",
+      suite: "Apt. 556",
+      city: "Gwenborough",
+      zipcode: "92998-3874",
+      geo: {
+        lat: "-37.3159",
+        lng: "81.1496"
+      }
+    },
+    phone: "1-770-736-8031 x56442",
+  },
+  {
+    id: 2,
+    name: "Ervin Howell",
+    address: {
+      street: "Victor Plains",
+      suite: "Suite 879",
+      city: "Wisokyburgh",
+      zipcode: "90566-7771",
+      geo: {
+        lat: "-43.9509",
+        lng: "-34.4618"
+      }
+    },
+    phone: "010-692-6593 x09125",
+  },
+  .
+  .
+  .
+  {
+    id: 11,
+    name: "John Doe",
+    address: {
+      street: "123 Main St",
+      suite: "Apt 1",
+      city: "Anytown",
+      zipcode: "12345",
+      geo: {
+        lat: "-37.3159",
+        lng: "81.1496"
+      }
+    },
+    phone: "1234567890"
+  }
 ]
 ```
 
 ## Edge Cases
 
-### No posts match userId
-If no posts match the given `userId`, return an empty array:
+### Null new user
+If new user is null, return all users without adding new user:
 
 ```tsx
-getPostsByUser(999)
-```
-
-```json
-[]
-```
-
-### Multiple posts for same userId
-If there are multiple posts for the same user, return all of them:
-
-```tsx
-getPostsByUser(1)
+addUser(null);
 ```
 
 ```json
 [
-  { id: 1, title: "Post 1" },
-  { id: 2, title: "Post 2" },
-  { id: 3, title: "Post 3" }
+  {
+    id: 1,
+    name: "Leanne Graham",
+    address: {
+      street: "Kulas Light",
+      suite: "Apt. 556",
+      city: "Gwenborough",
+      zipcode: "92998-3874",
+      geo: {
+        lat: "-37.3159",
+        lng: "81.1496"
+      }
+    },
+    phone: "1-770-736-8031 x56442",
+  },
+  {
+    id: 2,
+    name: "Ervin Howell",
+    address: {
+      street: "Victor Plains",
+      suite: "Suite 879",
+      city: "Wisokyburgh",
+      zipcode: "90566-7771",
+      geo: {
+        lat: "-43.9509",
+        lng: "-34.4618"
+      }
+    },
+    phone: "010-692-6593 x09125",
+  },
+  .
+  .
+  .
+  {
+    id: 10,
+    name: "Clementina DuBuque",
+    address: {
+      street: "Kattie Turnpike",
+      suite: "Suite 198",
+      city: "Lebsackbury",
+      zipcode: "31428-2261",
+      geo: {
+        lat: "-38.2386",
+        lng: "57.2232"
+      }
+    },
+    phone: "024-648-3804",
+  }
 ]
 ```
 

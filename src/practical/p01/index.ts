@@ -1,1 +1,1 @@
-export function getEdgePosts() {}
+export function getPostalAddress() {}

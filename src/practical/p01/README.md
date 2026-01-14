@@ -1,55 +1,97 @@
-# Subject 1 — Fetch First & Last Post
+# Subject 1 — Fetch Users
 
 ## API Endpoint
 
 ```
-https://jsonplaceholder.typicode.com/posts
+https://jsonplaceholder.typicode.com/users
 ```
 
 ## Function name
 
-`getEdgePosts`
+`getPostalAddress`
 
 ## Function interface
 
 ```tsx
-getEdgePosts()
+getPostalAddress()
 ```
 
 ## Description
 
-Fetch posts from the API and return only the **first** and **last** post as an array.
+Fetch users from the API and return all users as an array.
 
-Return only `id` and `title`.
+Return only return `id`, `name`, `phone`, `address`
 
 ## Example output
 
 ```json
 [
-  { id: 1, title: "sunt aut facere repellat provident occaecati" },
-  { id: 100, title: "at nam consequatur ea labore ea harum" }
+  { 
+    id: 1,
+    name: "Leanne Graham",
+    phone: "1-770-736-8031 x56442",
+    address: {
+      street: "Kulas Light",
+      suite: "Apt. 556",
+      city: "Gwenborough",
+      zipcode: "92998-3874",
+      geo: {
+        lat: "-37.3159",
+        lng: "81.1496"
+      }
+    },
+  },
+  {
+    id: 2,
+    name: "Ervin Howell",
+    phone: "010-692-6593 x09125",
+    address: {
+      street: "Victor Plains",
+      suite: "Suite 879",
+      city: "Wisokyburgh",
+      zipcode: "90566-7771",
+      geo: {
+        lat: "-43.9509",
+        lng: "-34.4618"
+      }
+    },
+  }
 ]
 ```
 
 ## Edge Cases
 
-### Single post in array
-If there is only one post, return it twice (as both first and last):
+### Null data
+If there is null data, return null:
 
 ```json
-[
-  { id: 1, title: "Only post" },
-  { id: 1, title: "Only post" }
-]
+null
 ```
 
-### Exactly two posts
-If there are exactly two posts, return both:
+### Empty data
+If there is empty data, return empty array:
+
+```json
+[]
+```
+
+### Address missing
+If there is address missing, return data with address as null:
 
 ```json
 [
-  { id: 1, title: "First" },
-  { id: 2, title: "Second" }
+  {
+    id: 1,
+    name: "Leanne Graham",
+    phone: "1-770-736-8031 x56442",
+    address: null
+  },
+  {
+    id: 2,
+    name: "Ervin Howell",
+    phone: "010-692-6593 x09125",
+    address: null
+  }
 ]
 ```
 

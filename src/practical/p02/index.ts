@@ -1,1 +1,1 @@
-export function getPostsByUser() {}
+export function addUser() {}

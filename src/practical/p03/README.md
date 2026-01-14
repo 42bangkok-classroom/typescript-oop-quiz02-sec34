@@ -1,54 +1,72 @@
-# Subject 3 — Map Posts With Comment Count
+# Subject 3 — Filter user by id
 
 ## API Endpoints
 
 ```
-https://jsonplaceholder.typicode.com/posts
-https://jsonplaceholder.typicode.com/comments
+https://jsonplaceholder.typicode.com/users
 ```
 
 ## Function name
 
-`mapPostWithCommentCount`
+`filterUserById`
 
 ## Function interface
 
 ```tsx
-mapPostWithCommentCount()
+filterUserById(id)
 ```
 
 ## Description
 
-Fetch posts and comments, then return posts with the total number of comments for each post.
+Fetch users from the API and return users object with `id`, `name`, `phone`, `address`.
 
-Note: The API returns posts with `id` field, but your output should use `postId` instead of `id`.
+## Example input
+
+```tsx
+filterUserById(1)
+```
 
 ## Example output
 
 ```json
-[
-  { postId: 1, title: "...", totalComments: 5 },
-  { postId: 2, title: "...", totalComments: 5 }
-]
+{
+  id: 1,
+  name: "Leanne Graham",
+  phone: "1-770-736-8031 x56442",
+  address: {
+    street: "Kulas Light",
+    suite: "Apt. 556",
+    city: "Gwenborough",
+    zipcode: "92998-3874",
+    geo: {
+      lat: "-37.3159",
+      lng: "81.1496"
+    }
+  }
+}
 ```
 
 ## Edge Cases
 
-### Posts with zero comments
-If a post has no comments, set `totalComments` to `0`:
+### User not found
+If user not found, return null:
 
 ```json
-[
-  { postId: 1, title: "Post 1", totalComments: 0 },
-  { postId: 2, title: "Post 2", totalComments: 0 }
-]
+null
 ```
 
-### Empty posts array
-If there are no posts, return an empty array:
+### Empty users array
+If there are no users, return null:
 
 ```json
-[]
+null
+```
+
+### Invalid id
+If users is not empty but id is invalid, return error message:
+
+```json
+"Invalid id"
 ```
 
 ## Global Rules
