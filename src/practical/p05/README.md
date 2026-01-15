@@ -3,7 +3,7 @@
 ## API Endpoint
 
 ```
-https://jsonplaceholder.typicode.com/users/{id}
+https://jsonplaceholder.typicode.com/users
 ```
 
 ## Function name
@@ -18,11 +18,12 @@ safeFetchUser(userId)
 
 ## Description
 
-Fetch a single user by `userId`.
+Fetch all users and find the one with matching `userId`.
 
 Rules:
-- If any error occurs, thorw error with custom name and message "Sec34UserNotFoundError" and return error message
-- If successful, return an object with `id`, `name`, `phone`, `address`
+-   If `axios` request fails (network error, 500, 404 from server, etc) or response data is null, return `null`.
+-   If user is not found in the list, return `Error` with message "Sec34UserNotFoundError".
+-   If successful, return an object with `id`, `name`, `phone`, `address`.
 
 ## Example input
 
@@ -34,46 +35,49 @@ safeFetchUser(1)
 
 ```json
 {
-  id: 1,
-  name: "Leanne Graham",
-  address: {
-    street: "Kulas Light",
-    suite: "Apt. 556",
-    city: "Gwenborough",
-    zipcode: "92998-3874",
-    geo: {
-      lat: "-37.3159",
-      lng: "81.1496"
+  "id": 1,
+  "name": "Leanne Graham",
+  "address": {
+    "street": "Kulas Light",
+    "suite": "Apt. 556",
+    "city": "Gwenborough",
+    "zipcode": "92998-3874",
+    "geo": {
+      "lat": "-37.3159",
+      "lng": "81.1496"
     }
   },
-  phone: "1-770-736-8031 x56442",
+  "phone": "1-770-736-8031 x56442"
 }
 ```
 
-## Example input
+## Example input (Not Found)
 
 ```tsx
 safeFetchUser(9999)
 ```
 
-## Example output
+## Example output (Not Found)
+
 ```ts
-"Sec34UserNotFoundError"
+Error: "Sec34UserNotFoundError"
 ```
 
 ## Edge Cases
 
 ### Invalid userId values
-Return `Sec34UserNotFoundError` for invalid or non-existent user IDs:
+
+Return `Error("Sec34UserNotFoundError")` for invalid or non-existent user IDs:
 
 ```tsx
-safeFetchUser(0)      // returns Sec34UserNotFoundError
-safeFetchUser(-1)    // returns Sec34UserNotFoundError
-safeFetchUser(9999)  // returns Sec34UserNotFoundError
+safeFetchUser(0)      // returns Error("Sec34UserNotFoundError")
+safeFetchUser(-1)    // returns Error("Sec34UserNotFoundError")
+safeFetchUser(9999)  // returns Error("Sec34UserNotFoundError")
 ```
 
 ### User with empty address
-If the user exists but has an empty address, return it:
+
+If the user exists but has an empty address, return it with `address: null`:
 
 ```tsx
 safeFetchUser(1)
@@ -81,10 +85,10 @@ safeFetchUser(1)
 
 ```json
 {
-  id: 1,
-  name: "Leanne Graham",
-  address: null,
-  phone: "1-770-736-8031 x56442",
+  "id": 1,
+  "name": "Leanne Graham",
+  "address": null,
+  "phone": "1-770-736-8031 x56442"
 }
 ```
 

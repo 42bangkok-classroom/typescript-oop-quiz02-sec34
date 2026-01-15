@@ -9,12 +9,12 @@ https://jsonplaceholder.typicode.com/users
 
 ## Function name
 
-`getTodosById`
+`getTodosByUserId`
 
 ## Function interface
 
 ```tsx
-getTodosById(id)
+getTodosByUserId(id)
 ```
 
 ## Description

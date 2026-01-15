@@ -56,10 +56,10 @@ If user not found, return error message:
 ```
 
 ### Empty users array
-If there are no users, return null:
+If there are no users, return empty array:
 
 ```json
-null
+[]
 ```
 
 ## Global Rules

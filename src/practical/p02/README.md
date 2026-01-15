@@ -22,6 +22,7 @@ Fetch users and add new user.
 
 Note: The id of the new user is the last user's id + 1.
 Note2: The new user will be object only not array.
+Note3: If any field is missing make that field value null.
 Return only `id`, `name`, `phone`, `address`.
 
 ## Example input
@@ -30,6 +31,8 @@ Return only `id`, `name`, `phone`, `address`.
 addUser({
   name: "John Doe",
   phone: "1234567890",
+  username: "johndoe",
+  email: "johndoe@example.com",
   address: {
     street: "123 Main St",
     suite: "Apt 1",
@@ -39,6 +42,12 @@ addUser({
       lat: "-37.3159",
       lng: "81.1496"
     }
+  },
+  website: "https://johndoe.com",
+  company: {
+    name: "John Doe Company",
+    catchPhrase: "John Doe Company",
+    bs: "John Doe Company"
   }
 });
 ```

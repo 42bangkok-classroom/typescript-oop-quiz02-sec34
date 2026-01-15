@@ -61,13 +61,6 @@ Return only return `id`, `name`, `phone`, `address`
 
 ## Edge Cases
 
-### Null data
-If there is null data, return null:
-
-```json
-null
-```
-
 ### Empty data
 If there is empty data, return empty array:
 
