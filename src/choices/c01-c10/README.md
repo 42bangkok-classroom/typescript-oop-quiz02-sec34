@@ -4,8 +4,8 @@ Process ที่ใช้ตรวจสอบงานมีชื่อว่
 
 - **A.** Call Stack
 - **B.** Microtask Queue
-- **C.** Event Loop
-- **D.** Queue
+- **C.** Queue
+- **D.** Event Loop
 
 ---
 
@@ -13,7 +13,7 @@ Process ที่ใช้ตรวจสอบงานมีชื่อว่
 
 Promise object มี method ใดที่ใช้สำหรับการทำงานที่สำเร็จ และการทำงานที่ไม่สำเร็จ ตามลำดับ?
 
-- **A.** catch, then
-- **B.** then, catch
+- **A.** then, catch
+- **B.** catch, then
 - **C.** finally, catch
 - **D.** catch, finally
