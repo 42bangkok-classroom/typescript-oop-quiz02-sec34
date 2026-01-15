@@ -55,12 +55,6 @@ If user not found, return error message:
 "Invalid id"
 ```
 
-### Empty users array
-If there are no users, return empty array:
-
-```json
-[]
-```
 
 ## Global Rules
 
