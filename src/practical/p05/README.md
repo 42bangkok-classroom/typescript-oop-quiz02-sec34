@@ -22,7 +22,7 @@ Fetch all users and find the one with matching `userId`.
 
 Rules:
 -   If `axios` request fails (network error, 500, 404 from server, etc) or response data is null, return `null`.
--   If user is not found in the list, return `Error` with message "Sec34UserNotFoundError".
+-   If user is not found in the list, return `null`.
 -   If successful, return an object with `id`, `name`, `phone`, `address`.
 
 ## Example input
@@ -60,19 +60,19 @@ safeFetchUser(9999)
 ## Example output (Not Found)
 
 ```ts
-Error: "Sec34UserNotFoundError"
+null
 ```
 
 ## Edge Cases
 
 ### Invalid userId values
 
-Return `Error("Sec34UserNotFoundError")` for invalid or non-existent user IDs:
+Return null for invalid or non-existent user IDs:
 
 ```tsx
-safeFetchUser(0)      // returns Error("Sec34UserNotFoundError")
-safeFetchUser(-1)    // returns Error("Sec34UserNotFoundError")
-safeFetchUser(9999)  // returns Error("Sec34UserNotFoundError")
+safeFetchUser(0)      // returns null
+safeFetchUser(-1)    // returns null
+safeFetchUser(9999)  // returns null
 ```
 
 ### User with empty address
